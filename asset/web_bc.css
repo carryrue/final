@@ -1,0 +1,574 @@
+/* =========================================
+   1. 全域設定
+   ========================================= */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f7f7;
+    color: #333; /* 預設文字顏色 */
+}
+
+a {
+    text-decoration: none; /* 移除超連結底線 */
+    color: #2563eb;        /* 設定連結顏色 */
+}
+
+/* =========================================
+   頁首
+   導覽列固定、Logo 與登入/購物車按鈕
+   ========================================= */
+header {
+    position: sticky; /* 讓導覽列捲動時固定在頂部 */
+    top: 0;
+    z-index: 10;      /* 確保壓在其他內容之上 */
+    background: #ffffff;
+    display: flex;    /* 讓左右內容分散對齊 */
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* 底部陰影 */
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* 登入按鈕跟購物車的間距 */
+}
+
+.login-btn {
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* =========================================
+   版面容器
+   限制內容最大寬度，避免在大螢幕太發散
+   ========================================= */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 24px;   /* 手機版左右留邊距 */
+}
+
+/* 商品主卡片區塊 */
+.product-main {
+    background: #fff;
+    padding: 40px 80px; 
+    border-radius: 16px;
+}
+
+/* (RWD) 手機版調整：縮小內距，避免內容被擠壓 */
+@media (max-width: 768px) {
+    .product-main {
+        padding: 24px 20px;
+    }
+}
+
+/* =========================================
+   圖片輪播區塊
+   控制輪播圖大小、切換按鈕與動畫
+   ========================================= */
+.slideshow-container {
+    max-width: 500px;
+    margin: 0 auto;   /* 置中 */
+    position: relative; 
+    overflow: hidden; /* 防止圖片溢出圓角 */
+    border-radius: 12px;
+}
+
+.mySlides {
+    animation: fade 1.5s; /* 淡入動畫 */
+}
+
+/* 確保輪播圖片寬度剛好，高度自動 */
+.mySlides img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+/* 淡入動畫關鍵影格 */
+@keyframes fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+/* 左右切換按鈕 */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* 垂直置中修正 */
+    padding: 20px;
+    width: auto;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 30px;
+    border-radius: 3px;
+    transition: 0.6s ease;
+    cursor: pointer;
+}
+
+.next {
+    right: 0px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(240, 232, 232, 0.8);
+}
+
+/* 輪播下方的圓點 */
+.dot {
+    position: relative;
+    height: 10px;
+    width: 10px;
+    margin: 0px 2px;
+    border-radius: 50%;
+    background-color: #bbb;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    cursor: pointer;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+/* =========================================
+   商品資訊區
+   包含標題、價格、運送方式
+   ========================================= */
+.product-info h1 {
+    margin-top: 0;
+}
+
+.shipping {
+    margin: 16px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* 價格與銷售量容器 */
+.price-container {
+    display: flex;
+    align-items: baseline; /* 對齊文字底部 */
+    gap: 12px;
+    margin: 15px 0 20px 0;
+    flex-wrap: wrap;
+}
+
+/* 價格大字 */
+.sale-price {
+    color: #e63946;
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+/* 已售出標籤 */
+.sold-badge {
+    font-size: 0.9rem;
+    color: #666;
+    background-color: #f5f5f5;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-left: auto; /* 將標籤推到最右邊 */
+}
+
+/* =========================================
+   購買按鈕與標籤
+   ========================================= */
+.btn-wrapper {
+    position: relative; /* 作為黃色標籤的定位基準 */
+    margin-top: 24px;
+}
+
+/* 黃色熱銷標籤 */
+.promo-badge {
+    position: absolute;
+    top: -12px;
+    right: 0;
+    background-color: #fde047;
+    color: #422006;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 8px 8px 0 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* 紅色加入購物車按鈕 */
+.buy-btn {
+    background: #dc2626;
+    color: #fff;
+    padding: 16px;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    border-top-right-radius: 0; /* 配合標籤形狀 */
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(220, 38, 38, 0.2);
+}
+
+.buy-btn:active {
+    transform: scale(0.98); /* 點擊時縮小效果 */
+}
+
+/* =========================================
+   介紹內容區
+   包含文案、特色列表、分隔線
+   ========================================= */
+.detail-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.main-slogan {
+    font-size: 18px;
+    color: #333;
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+.feature-list {
+    font-size: 18px; 
+    line-height: 1.6; 
+    font-weight: bold;
+}
+
+/* 文字描述區塊優化 */
+.description-text {
+    max-width: 800px; 
+    margin: 0 auto;
+    line-height: 1.8; 
+    font-size: 16px;
+    color: #444;
+}
+
+.description-text p {
+    margin: 20px 0;
+    color: #555;
+}
+
+/* 虛線分隔線 */
+.section-divider {
+    border: 0;
+    border-top: 1px dashed #ccc;
+    margin: 30px 0;
+}
+
+/* =========================================
+   雙圖並排宣傳區
+   ========================================= */
+.dual-promo-images {
+    display:grid;
+    gap: 16px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.promo-item {
+    flex: none; /* 平分寬度 */
+}
+
+.promo-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+/* (RWD) 手機版改為直向排列 */
+@media (max-width: 768px) {
+    .dual-promo-images {
+        flex-direction: column;
+    }
+}
+
+/* =========================================
+   規格表格
+   ========================================= */
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.spec-table th, .spec-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.spec-table th {
+    width: 30%;
+    color: #888;
+    font-weight: normal;
+    background-color: #fafafa;
+}
+
+/* =========================================
+   使用者評價區
+   ========================================= */
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.review-card {
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 24px;
+    flex: 1;
+    min-width: 250px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+    width: 100%;
+}
+
+.review-card:hover {
+    transform: translateY(-5px); /* 浮起效果 */
+}
+
+.stars {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.review-text {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    font-style: italic;
+}
+
+.reviewer {
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: right;
+}
+
+/* =========================================
+   懸浮購物車與彈窗
+   ========================================= */
+.floating-cart {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 64px;
+    height: 64px;
+    background: #ef4444;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    z-index: 20;
+    cursor: pointer;
+}
+
+.floating-cart img {
+    width: 32px;
+    height: 32px;
+}
+/* ===== 限時優惠彈窗 ===== */
+.promo-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  max-width: 320px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.popup-content h2 {
+  color: #e60023;
+  margin-bottom: 15px;
+}
+
+.countdown-time {
+  font-size: 32px;
+  font-weight: bold;
+  color: #e60023;
+  margin: 10px 0 20px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #999;
+}
+/* ===== 遮罩 ===== */
+.promo-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* ===== 白色彈窗 ===== */
+.promo-modal {
+  background: #fff;
+  width: 360px;
+  max-width: 90%;
+  border-radius: 18px;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== 標題 ===== */
+.promo-title {
+  color: #ff2d2d;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+/* ===== 原價 ===== */
+.promo-old-price {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+/* ===== 特價 ===== */
+.promo-new-price {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* ===== 倒數時間 ===== */
+.promo-countdown {
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 26px;
+}
+
+/* ===== 關閉按鈕 ===== */
+.promo-close-btn {
+  background: #0f172a;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.promo-close-btn:hover {
+  opacity: 0.9;
+}
+
+/* ===== 按鈕倒數樣式 ===== */
+.buy-btn {
+  position: relative;
+  font-size: 18px;
+  padding: 14px 24px;
+}
+
+.btn-timer {
+  display: block;
+  font-size: 14px;
+  margin-top: 6px;
+  color: #ffecec;
+}
+
+
+/* =========================================
+   頁尾區域
+   ========================================= */
+footer {
+    margin-top: 80px;
+    padding: 60px 24px;
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    text-align: center;
+    color: #666;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.footer-links span {
+    color: #ccc;
+}
+
+.copyright {
+    font-size: 12px;
+    color: #999;
+}
+/* =========================================
+   加入購物車
+   ========================================= */
+   .cart-toast {
+  position: fixed;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2ecc71;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(0,0,0,.2);
+  z-index: 9999;
+  transition: top .4s ease, opacity .4s ease;
+  opacity: 0;
+}
+
+.cart-toast.show {
+  top: 20px;
+  opacity: 1;
+}
