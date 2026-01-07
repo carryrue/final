@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DingSpace靜界" />
+  <title>DingSpace靜界｜專屬於你的靜謐時刻 - 商品頁面</title>
+  <link rel="stylesheet" href="../asset/web_kl.css">
+  <link rel="stylesheet" href="../asset/style.css">
+</head>
+
+<body>
+
+  <header></header>
+  <div id="cartToast" class="cart-toast">
+    已加入購物車
+  </div>
+  <main class="container">
+<!-- 輪播商品圖 -->
+    <section class="product-main">
+      <div class="slideshow-container">
+        <div class="mySlides">
+          <img src="../img/product/buds_pic1.png">
+        </div>
+
+        <div class="mySlides">
+          <img src="../img/product/buds_pic2.png">
+        </div>
+
+        <div class="mySlides">
+          <img src="../img/product/buds_pic3.png">
+        </div>
+
+        <!--左右按鈕-->
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+      </div>
+
+      <!--顯示圓點-->
+      <div style="text-align: center;">
+        <span class="dot" onclick="currentSlides(0)"></span>
+        <span class="dot" onclick="currentSlides(1)"></span>
+        <span class="dot" onclick="currentSlides(2)"></span>
+      </div>
+      <!-- 商品名 -->
+      <div class="product-info">
+        <h1>DingSpace靜界｜主動降噪藍牙耳機</h1>
+        <div class="shipping">🚚 支援運送方式：7-11｜新竹物流｜全家</div>
+
+        <div class="price-container">
+          <span class="sale-price">NT$5,899</span>
+          <span class="sold-badge">已售出 1,205 件</span>
+        </div>
+        <div class="btn-wrapper">
+          <span class="promo-badge">🔥 熱銷</span>
+          <button class="buy-btn">加入購物車</button>
+        </div>
+
+        <div class="detail-section">
+
+          <h2 class="main-slogan">喧囂之外，只聽見心跳的聲音</h2>
+
+          <ul class="feature-list">
+            <li>✔ ANC 主動降噪 靜享世界</li>
+            <li>✔ 30小時 超長續航電力</li>
+            <li>✔ IPX5 生活防水 防汗水</li>
+            <li>✔ 藍牙秒連不延遲</li>
+          </ul>
+
+          <article class="description-text">
+            <p>
+              戴上<strong>「DingSpace靜界」</strong>，瞬間切換到你的專屬頻率。
+              搭載最新 ANC 降噪技術，有效過濾 90% 環境噪音，無論是捷運通勤還是圖書館K書，都能給你錄音室級的純淨音質。
+              人體工學入耳式設計，全天配戴也輕盈無感，讓好音樂成為你生活的背景音。
+            </p>
+          </article>
+          <div class="dual-promo-images">
+            <div class="promo-item">
+                <img src="../img/product/buds_pic4.png" alt="宣傳圖1">
+            </div>
+            
+            <div class="promo-item">
+                <img src="../img/product/buds_pic5.png" alt="宣傳圖2">
+            </div>
+        </div>
+          <hr class="section-divider">
+
+          <h3>詳細規格</h3>
+          <table class="spec-table">
+            <tbody>
+              <tr>
+                <th scope="row">藍牙版本</th>
+                <td>Bluetooth 5.3</td>
+              </tr>
+              <tr>
+                <th scope="row">單體大小</th>
+                <td>10mm 動圈單體</td>
+              </tr>
+              <tr>
+                <th scope="row">續航力</th>
+                <td>耳機 6hr / 搭配充電盒 30hr</td>
+              </tr>
+              <tr>
+                <th scope="row">充電介面</th>
+                <td>Type-C 快充</td>
+              </tr>
+              <tr>
+                 <th scope="row">保固</th>
+                 <td>原廠保固 18 個月</td>
+               </tr>
+            </tbody>
+          </table>
+          <!-- 評論 -->
+          <section class="reviews-section" style="margin-top: 50px;">
+            <h2 style="text-align: center; margin-bottom: 30px;">聽聽使用者怎麼說</h2>
+
+            <div class="reviews-container">
+              <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">"原本以為是詐騙，結果真的很好"</p>
+                <p class="reviewer">- 台南市 陳先生</p>
+              </div>
+
+              <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">"低音很渾厚，高音也不會刺耳，這個價位能買到這種音質CP值很高。"</p>
+                <p class="reviewer">- 新北市 柳先生</p>
+              </div>
+
+              <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐</div>
+                <p class="review-text">"連線速度很快，打開蓋子就連上了。戴著跑步也不會掉，很穩。"</p>
+                <p class="reviewer">- 桃園市 李小姐</p>
+              </div>
+            </div>
+          </section>
+        </div>
+    </section>
+
+  </main>
+
+  <div class="floating-cart" onclick="location.href='market.html'" role="button" style="cursor: pointer;">
+    <img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="購物車" />
+  </div>
+
+  <footer></footer>
+  <script src="../asset/layout.js"></script>
+  <script src="../asset/product.js"></script>
+  <script src="../asset/pop.js"></script>
+</body>
+
+</html>
